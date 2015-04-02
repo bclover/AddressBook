@@ -23,16 +23,71 @@
     <![endif]-->
 </head>
 
-<body ng-controller="PeopleController">
+<body ng-controller="MainController">
 
     <h1>Address Book</h1>
 
     <div class="wrapper">
-        <div class="contact-item" ng-repeat="person in people | orderBy:'name'">
-            <div class="name">{{person.name}} - {{person.phone}}</div>
-            <span>{{person.city}}</span>
+
+            <div class="row row-with-margin" ng-hide="addContactFormIsVisible">
+            <div class="text-center">
+                <button class="btn btn-primary btn-sm" ng-click="addContact()">Add Contact</button>
+            </div>
         </div>
+
+
+        <div id="contactForm" ng-show="addContactFormIsVisible">
+
+            <h2>Add a Contact</h2>
+
+            <div class="row row-with-margin">
+                <div class="col-md-1">
+                    Name:
+                </div>
+                <div class="col-md-11">
+                    <input id="contactNameInput" type="text" ng-model="newPerson.name" />
+                </div>
+            </div>
+            <div class="row row-with-margin">
+                <div class="col-md-1">
+                    Phone:
+                </div>
+                <div class="col-md-11">
+                    <input id="contactPhoneInput" type="text" ng-model="newPerson.phone" />
+                </div>
+            </div>
+            <div class="row row-with-margin">
+                <div class="col-md-1">
+                    City:
+                </div>
+                <div class="col-md-11">
+                    <input id="contactCityInput" type="text" ng-model="newPerson.city" />
+                </div>
+            </div>
+
+            <div class="row row-with-margin">
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-11">
+                    <button class="btn btn-primary btn-sm" ng-click="save()">Save</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="contactInfo" ng-hide="addContactFormIsVisible">
+
+            <div class="contact-item" ng-repeat="person in people | orderBy:'name'">
+                <div class="name"><strong>Name:</strong> {{person.name}}</div>
+                <div class="phone"><strong>Phone: </strong>{{person.phone}}</div>
+                <div class="city"><strong>City: </strong>{{person.city}}</div>
+            </div>
+
+        </div>
+
     </div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
