@@ -16,7 +16,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
     ];
 
     $scope.addContactBtnClicked = function () {
-        $scope.addContactFormIsVisible = true;
+        showContactForm(true);
     };
 
     $scope.removeContactBtnClicked = function (person) {
@@ -25,7 +25,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
 
     $scope.saveBtnClicked = function () {
         if ($scope.newPerson && $scope.newPerson.firstName && $scope.newPerson.lastName && $scope.newPerson.phone && $scope.newPerson.city) {
-            $scope.addContactFormIsVisible = false;
+            showContactForm(false);
             $scope.people.push({
                 firstName:  $scope.newPerson.firstName,
                 lastName:  $scope.newPerson.lastName,
@@ -39,12 +39,21 @@ myApp.controller('MainController', ['$scope', function ($scope) {
         }
     };
 
+    $scope.cancelBtnClicked = function() {
+        showContactForm(false);
+        clearForm();
+    };
+
     function clearForm() {
         $scope.newPerson.firstName = '';
         $scope.newPerson.lastName = '';
         $scope.newPerson.phone = '';
         $scope.newPerson.city = '';
         $scope.error.message = '';
+    }
+
+    function showContactForm(newValue){
+        $scope.addContactFormIsVisible = newValue;
     }
 
 }]);
