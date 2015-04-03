@@ -5,32 +5,46 @@
 var myApp = angular.module('myApp', []);
 
 myApp.controller('MainController', ['$scope', function ($scope) {
+
+    $scope.error = {};
+
     $scope.people = [
-        {name: 'John Doe', phone: '425-218-1123', city: 'New York'},
-        {name: 'Jane Doe', phone: '213-734-1903', city: 'Chicago'},
-        {name: 'Sam Smith', phone: '919-861-1227', city: 'Raleigh'},
-        {name: 'Paul Jones', phone: '412-954-4106', city: 'Pittsburgh'}
+        {firstName: 'John', lastName: 'Doe', phone: '425-218-1123', city: 'New York'},
+        {firstName: 'Jane', lastName: 'Doe', phone: '213-734-1903', city: 'Chicago'},
+        {firstName: 'Sam', lastName: 'Smith', phone: '919-861-1227', city: 'Raleigh'},
+        {firstName: 'Paul', lastName: 'Jones', phone: '412-954-4106', city: 'Pittsburgh'}
     ];
 
-    $scope.save = function () {
-        if ($scope.newPerson.name && $scope.newPerson.phone && $scope.newPerson.city) {
+    $scope.addContactBtnClicked = function () {
+        $scope.addContactFormIsVisible = true;
+    };
+
+    $scope.removeContactBtnClicked = function (person) {
+        $scope.people = _.without($scope.people, person);
+    };
+
+    $scope.saveBtnClicked = function () {
+        if ($scope.newPerson && $scope.newPerson.firstName && $scope.newPerson.lastName && $scope.newPerson.phone && $scope.newPerson.city) {
             $scope.addContactFormIsVisible = false;
             $scope.people.push({
-                name:  $scope.newPerson.name,
+                firstName:  $scope.newPerson.firstName,
+                lastName:  $scope.newPerson.lastName,
                 phone: $scope.newPerson.phone,
                 city:  $scope.newPerson.city
             });
             clearForm();
+        }else{
+            $scope.error.message = 'You must enter values for all fields before you can save.';
+            console.log('$scope.error.message:', $scope.error.message);
         }
     };
 
-    $scope.addContact = function () {
-        $scope.addContactFormIsVisible = true;
-    };
-
     function clearForm() {
-        $scope.newPerson.name = '';
+        $scope.newPerson.firstName = '';
+        $scope.newPerson.lastName = '';
         $scope.newPerson.phone = '';
         $scope.newPerson.city = '';
+        $scope.error.message = '';
     }
+
 }]);
