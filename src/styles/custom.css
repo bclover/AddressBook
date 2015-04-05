@@ -1,3 +1,7 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+
 body{
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
@@ -47,6 +51,17 @@ h1{
     margin-bottom: 7px
 }
 
-.no-right-padding {
+.contact-form-label {
     padding-right: 0;
+}
+
+#contactForm input {
+    width: 95%;
+}
+
+#contactFormInputContainer {
+    background: #f8fff7;
+    border: solid 1px #006400;
+    border-radius: 5px;
+    padding: 10px;
 }
