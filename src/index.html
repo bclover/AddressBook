@@ -37,59 +37,59 @@
     </div>
 
     <!-- Add Contact Form -->
-    <div id="contactForm" ng-show="addContactFormIsVisible">
+    <div id="contactForm" ng-show="addContactFormIsVisible" class="form-horizontal">
 
         <h2>Add Contact</h2>
 
         <div id="contactFormInputContainer">
 
-            <div class="row row-with-margin">
-                <div class="col-md-2 contact-form-label">
-                    First Name:
+            <div class="form-group">
+                <div class="col-md-3 control-label">
+                    <strong>First Name:</strong>
                 </div>
-                <div class="col-md-10">
-                    <input id="contactFirstNameInput" type="text" ng-model="newPerson.firstName"/>
-                </div>
-            </div>
-            <div class="row row-with-margin">
-                <div class="col-md-2 contact-form-label">
-                    Last Name:
-                </div>
-                <div class="col-md-10">
-                    <input id="contactLastNameInput" type="text" ng-model="newPerson.lastName"/>
+                <div class="col-md-9">
+                    <input id="contactFirstNameInput" class="form-control" type="text" ng-model="newPerson.firstName"/>
                 </div>
             </div>
-            <div class="row row-with-margin">
-                <div class="col-md-2 contact-form-label">
-                    Phone:
+            <div class="form-group">
+                <div class="col-md-3 control-label">
+                    <strong>Last Name:</strong>
                 </div>
-                <div class="col-md-10">
-                    <input id="contactPhoneInput" type="text" ng-model="newPerson.phone"/>
+                <div class="col-md-9">
+                    <input id="contactLastNameInput" class="form-control" type="text" ng-model="newPerson.lastName"/>
                 </div>
             </div>
-            <div class="row row-with-margin">
-                <div class="col-md-2 contact-form-label">
-                    City:
+            <div class="form-group">
+                <div class="col-md-3 control-label">
+                    <strong>Phone:</strong>
                 </div>
-                <div class="col-md-10">
-                    <input id="contactCityInput" type="text" ng-model="newPerson.city"/>
+                <div class="col-md-9">
+                    <input id="contactPhoneInput" class="form-control" type="text" ng-model="newPerson.phone"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 control-label">
+                    <strong>City:</strong>
+                </div>
+                <div class="col-md-9">
+                    <input id="contactCityInput" class="form-control" type="text" ng-model="newPerson.city"/>
                 </div>
             </div>
 
-            <div class="row row-with-margin">
-                <div class="col-md-2 contact-form-label">
+            <div class="form-group">
+                <div class="col-md-3 control-label">
 
                 </div>
-                <div class="col-md-10 text-danger">
+                <div class="col-md-9 text-danger">
                     {{error.message}}
                 </div>
             </div>
 
-            <div class="row row-with-margin">
-                <div class="col-md-2 contact-form-label">
+            <div class="form-group">
+                <div class="col-md-3 control-label">
 
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-9">
                     <button class="btn btn-primary btn-sm" ng-click="saveBtnClicked()">Save</button>
                     <button class="btn btn-success btn-sm" ng-click="cancelBtnClicked()">Cancel</button>
                 </div>

@@ -46,14 +46,6 @@ h1{
     padding: 10px;
 }
 
-.row-with-margin {
-    margin-top: 7px;
-    margin-bottom: 7px
-}
-
-.contact-form-label {
-    padding-right: 0;
-}
 
 #contactForm input {
     width: 95%;
