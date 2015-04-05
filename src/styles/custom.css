@@ -24,10 +24,6 @@ h1{
     border-radius: 15px;
 }
 
-.name, .phone, .city{
-    font-size: 16px;
-}
-
 .name-label {
     margin-right: 10px;
 }
@@ -55,5 +51,5 @@ h1{
     background: #f8fff7;
     border: solid 1px #006400;
     border-radius: 5px;
-    padding: 10px;
+    padding-top: 25px;
 }

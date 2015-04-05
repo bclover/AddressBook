@@ -48,7 +48,7 @@
                     <strong>First Name:</strong>
                 </div>
                 <div class="col-md-9">
-                    <input id="contactFirstNameInput" class="form-control" type="text" ng-model="newPerson.firstName"/>
+                    <input class="form-control" type="text" ng-model="newPerson.firstName"/>
                 </div>
             </div>
             <div class="form-group">
@@ -56,7 +56,23 @@
                     <strong>Last Name:</strong>
                 </div>
                 <div class="col-md-9">
-                    <input id="contactLastNameInput" class="form-control" type="text" ng-model="newPerson.lastName"/>
+                    <input class="form-control" type="text" ng-model="newPerson.lastName"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 control-label">
+                    <strong>Address 1:</strong>
+                </div>
+                <div class="col-md-9">
+                    <input class="form-control" type="text" ng-model="newPerson.address1"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 control-label">
+                    <strong>Address 2:</strong>
+                </div>
+                <div class="col-md-9">
+                    <input class="form-control" type="text" ng-model="newPerson.address2"/>
                 </div>
             </div>
             <div class="form-group">
@@ -64,7 +80,7 @@
                     <strong>Phone:</strong>
                 </div>
                 <div class="col-md-9">
-                    <input id="contactPhoneInput" class="form-control" type="text" ng-model="newPerson.phone"/>
+                    <input class="form-control" type="text" ng-model="newPerson.phone"/>
                 </div>
             </div>
             <div class="form-group">
@@ -72,12 +88,19 @@
                     <strong>City:</strong>
                 </div>
                 <div class="col-md-9">
-                    <input id="contactCityInput" class="form-control" type="text" ng-model="newPerson.city"/>
+                    <input class="form-control" type="text" ng-model="newPerson.city"/>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-3 control-label">
+                    <strong>State:</strong>
+                </div>
+                <div class="col-md-9">
+                    <input class="form-control" type="text" ng-model="newPerson.state"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
 
                 </div>
                 <div class="col-md-9 text-danger">
@@ -104,7 +127,7 @@
 
         <div class="contact-item" ng-repeat="person in people | orderBy:'lastName'">
 
-            <div class="row name">
+            <div class="row">
                 <div class="col-md-1 name-label">
                     <strong>Name:</strong>
                 </div>
@@ -116,9 +139,26 @@
                     </button>
                 </div>
             </div>
-            <div class="phone"><strong>Phone: </strong>{{person.phone}}</div>
-            <div class="city"><strong>City: </strong>{{person.city}}</div>
 
+            <div>
+                <strong>Address 1: </strong>{{person.address1}}
+            </div>
+
+            <div>
+                <strong>Address 2: </strong>{{person.address2}}
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>City: </strong>{{person.city}}
+                </div>
+                <div class="col-md-3">
+                    <strong>State: </strong>{{person.state}}
+                </div>
+                <div class="col-md-5">
+                    <strong>Phone: </strong>{{person.phone}}
+                </div>
+            </div>
         </div>
 
     </div>
