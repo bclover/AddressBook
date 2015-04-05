@@ -14,11 +14,15 @@ h1{
     text-shadow: 0px 2px 0px #fff;
 }
 
+#addContactBtn {
+    margin-bottom: 10px;
+}
+
 .btn-circle {
     width: 20px;
     height: 20px;
     text-align: center;
-    padding: 6px 0;
+    padding: 1px 0px 0px 1px;
     font-size: 12px;
     line-height: .65;
     border-radius: 15px;
@@ -29,6 +33,7 @@ h1{
 }
 
 .wrapper{
+    min-height: 535px;
     width: 550px;
     margin: 0 auto;
     box-shadow: 5px 5px 5px #555;
@@ -38,7 +43,11 @@ h1{
 }
 
 .contact-item {
-    border-bottom: thin dotted #666;
+    background: #fffdf1;
+    border: solid 1px #006400;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding-top: 25px;
     padding: 10px;
 }
 

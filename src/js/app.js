@@ -6,7 +6,7 @@ var myApp = angular.module('myApp', []);
 
 myApp.controller('MainController', ['$scope', function ($scope) {
 
-    $scope.error = {};
+    $scope.error = {message: "* Required fields."};
 
     $scope.people = [
         {
@@ -14,36 +14,36 @@ myApp.controller('MainController', ['$scope', function ($scope) {
             lastName:  'Doe',
             address1:  '123 High Way',
             address2:  '',
-            phone:     '425-218-1123',
             city:      'New York',
-            state:     'NY'
+            state:     'NY',
+            zip:       '32567'
         },
         {
             firstName: 'Jane',
             lastName:  'Doe',
             address1:  '1502 Pine St',
             address2:  'Suite A',
-            phone:     '213-734-1903',
             city:      'Chicago',
-            state:     'IL'
+            state:     'IL',
+            zip:       '42212'
         },
         {
             firstName: 'Sam',
             lastName:  'Smith',
             address1:  '337 Doemont Drive',
             address2:  '',
-            phone:     '919-861-1227',
             city:      'Raleigh',
-            state:     'NC'
+            state:     'NC',
+            zip:       '34135'
         },
         {
             firstName: 'Paul',
             lastName:  'Jones',
             address1:  '435 McClellan Dr.',
             address2:  'Suite 213',
-            phone:     '412-954-4106',
             city:      'Pittsburgh',
-            state:     'PA'
+            state:     'PA',
+            zip:       '42678'
         }
     ];
 
@@ -58,7 +58,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
     $scope.saveBtnClicked = function () {
         var displayError;
         if ($scope.newPerson) {
-            if ($scope.newPerson.firstName && $scope.newPerson.lastName && $scope.newPerson.address1, $scope.newPerson.phone && $scope.newPerson.city, $scope.newPerson.state) {
+            if ($scope.newPerson.firstName && $scope.newPerson.lastName && $scope.newPerson.address1 && $scope.newPerson.city && $scope.newPerson.state && $scope.newPerson.zip) {
                 displayError = false;
                 showContactForm(false);
                 $scope.people.push({
@@ -66,12 +66,12 @@ myApp.controller('MainController', ['$scope', function ($scope) {
                     lastName:  $scope.newPerson.lastName,
                     address1:  $scope.newPerson.address1,
                     address2:  $scope.newPerson.address2,
-                    phone:     $scope.newPerson.phone,
                     city:      $scope.newPerson.city,
-                    state:     $scope.newPerson.state
+                    state:     $scope.newPerson.state,
+                    zip:       $scope.newPerson.zip
                 });
                 clearForm();
-            }else{
+            } else {
                 displayError = true;
             }
         }
@@ -79,7 +79,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
             displayError = true;
         }
 
-        if(displayError){
+        if (displayError) {
             $scope.error.message = 'Everything but the Address 2 field is required.';
         }
     };
@@ -95,10 +95,10 @@ myApp.controller('MainController', ['$scope', function ($scope) {
         $scope.newPerson.lastName = '';
         $scope.newPerson.address1 = '';
         $scope.newPerson.address2 = '';
-        $scope.newPerson.phone = '';
         $scope.newPerson.city = '';
         $scope.newPerson.state = '';
-        $scope.error.message = '';
+        $scope.newPerson.zip = '';
+        $scope.error.message = '* Required fields.';
     }
 
     function showContactForm(newValue) {
