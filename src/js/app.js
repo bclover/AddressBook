@@ -1,15 +1,16 @@
-/**
- * Created by bryanclover on 4/2/15.
- */
-
 var myApp = angular.module('myApp', []);
 
 myApp.controller('MainController', ['$scope', function ($scope) {
+
+    var ADD_CONTACT_STATE = 'add.contact.state';
+    var EDIT_CONTACT_STATE = 'edit.contact.state';
+    var currentState = '';
 
     $scope.error = {message: "* Required fields."};
 
     $scope.people = [
         {
+            id: 1,
             firstName: 'John',
             lastName:  'Doe',
             address1:  '123 High Way',
@@ -19,6 +20,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
             zip:       '32567'
         },
         {
+            id: 2,
             firstName: 'Jane',
             lastName:  'Doe',
             address1:  '1502 Pine St',
@@ -28,6 +30,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
             zip:       '42212'
         },
         {
+            id: 3,
             firstName: 'Sam',
             lastName:  'Smith',
             address1:  '337 Doemont Drive',
@@ -37,6 +40,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
             zip:       '34135'
         },
         {
+            id: 4,
             firstName: 'Paul',
             lastName:  'Jones',
             address1:  '435 McClellan Dr.',
@@ -47,7 +51,21 @@ myApp.controller('MainController', ['$scope', function ($scope) {
         }
     ];
 
+    //********************* VIEW METHODS ********************//
+
     $scope.addContactBtnClicked = function () {
+        setFormState(ADD_CONTACT_STATE);
+        showContactForm(true);
+    };
+
+    $scope.cancelBtnClicked = function () {
+        showContactForm(false);
+        clearForm();
+    };
+
+    $scope.editContactBtnClicked = function (person) {
+        setFormState(EDIT_CONTACT_STATE);
+        loadExistingPersonData(person);
         showContactForm(true);
     };
 
@@ -57,11 +75,18 @@ myApp.controller('MainController', ['$scope', function ($scope) {
 
     $scope.saveBtnClicked = function () {
         var displayError;
+        (currentState === ADD_CONTACT_STATE) ? addNewContact() : saveChangesToContact();
+    };
+
+    //********************* HELPER METHODS ********************//
+
+    function addNewContact() {
         if ($scope.newPerson) {
             if ($scope.newPerson.firstName && $scope.newPerson.lastName && $scope.newPerson.address1 && $scope.newPerson.city && $scope.newPerson.state && $scope.newPerson.zip) {
                 displayError = false;
                 showContactForm(false);
                 $scope.people.push({
+                    id: $scope.people.length + 1,
                     firstName: $scope.newPerson.firstName,
                     lastName:  $scope.newPerson.lastName,
                     address1:  $scope.newPerson.address1,
@@ -82,15 +107,11 @@ myApp.controller('MainController', ['$scope', function ($scope) {
         if (displayError) {
             $scope.error.message = 'Everything but the Address 2 field is required.';
         }
-    };
-
-    $scope.cancelBtnClicked = function () {
-        showContactForm(false);
-        clearForm();
-    };
+    }
 
     function clearForm() {
         $scope.newPerson = {};
+        $scope.newPerson.id = '';
         $scope.newPerson.firstName = '';
         $scope.newPerson.lastName = '';
         $scope.newPerson.address1 = '';
@@ -99,11 +120,34 @@ myApp.controller('MainController', ['$scope', function ($scope) {
         $scope.newPerson.state = '';
         $scope.newPerson.zip = '';
         $scope.error.message = '* Required fields.';
+        currentState = '';
+    }
+
+    function saveChangesToContact() {
+        var existingContactIndex = _.findIndex($scope.people, 'id', $scope.newPerson.id);
+        $scope.people[existingContactIndex] = $scope.newPerson;
+        clearForm();
+        showContactForm(false);
+    }
+
+    function setFormState(newValue) {
+        currentState = newValue;
     }
 
     function showContactForm(newValue) {
         $scope.addContactFormIsVisible = newValue;
     }
 
-}])
-;
+    function loadExistingPersonData(person) {
+        $scope.newPerson = {};
+        $scope.newPerson.id = person.id;
+        $scope.newPerson.firstName = person.firstName;
+        $scope.newPerson.lastName = person.lastName;
+        $scope.newPerson.address1 = person.address1;
+        $scope.newPerson.address2 = person.address2;
+        $scope.newPerson.city = person.city;
+        $scope.newPerson.state = person.state;
+        $scope.newPerson.zip = person.zip;
+    }
+
+}]);

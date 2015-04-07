@@ -28,8 +28,8 @@ h1{
     border-radius: 15px;
 }
 
-.name-label {
-    margin-right: 10px;
+#editIcon, #deleteIcon {
+    padding-right: 3px;
 }
 
 .wrapper{
@@ -44,7 +44,7 @@ h1{
 
 .contact-item {
     background: #fffdf1;
-    border: solid 1px #006400;
+    border: solid 1px #023864;
     border-radius: 5px;
     margin-bottom: 10px;
     padding-top: 25px;

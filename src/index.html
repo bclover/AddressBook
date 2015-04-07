@@ -32,7 +32,8 @@
     <!-- Add Contact Button -->
     <div class="row row-with-margin" ng-hide="addContactFormIsVisible">
         <div class="text-center">
-            <button id="addContactBtn" class="btn btn-primary btn-sm" ng-click="addContactBtnClicked()">Add Contact</button>
+            <button id="addContactBtn" class="btn btn-primary btn-sm" ng-click="addContactBtnClicked()">Add Contact
+            </button>
         </div>
     </div>
 
@@ -128,40 +129,54 @@
         <div class="contact-item" ng-repeat="person in people | orderBy:'lastName'">
 
             <div class="row">
-                <div class="col-md-1 name-label">
+                <div class="col-md-6">
                     <strong>Name:</strong>
-                </div>
-                <div class="col-md-9">
                     {{person.firstName + ' ' + person.lastName}}
                 </div>
-                <div class="col-md-1 pull-right">
-                    <button class="btn btn-circle btn-danger btn-xs" ng-click="removeContactBtnClicked(person)">x
+                <div class="col-md-6">
+                    <strong>City: </strong>
+                    {{person.city}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>Address 1: </strong>
+                    {{person.address1}}
+                </div>
+                <div class="col-md-6">
+                    <strong>State: </strong>
+                    {{person.state}}
+                </div>
+            </div>
+
+            <div div class="row">
+                <div class="col-md-6">
+                    <strong>Address 2: </strong>
+                    {{person.address2}}
+                </div>
+                <div class="col-md-6">
+                    <strong>Zip Code: </strong>{{person.zip}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-link btn-xs" ng-click="editContactBtnClicked(person)">
+                        <i id="editIcon" class="fa fa-pencil"></i>Edit
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-link btn-xs" ng-click="removeContactBtnClicked(person)">
+                        <i id="deleteIcon" class="fa fa-trash-o"></i>Delete
                     </button>
                 </div>
             </div>
 
-            <div>
-                <strong>Address 1: </strong>{{person.address1}}
-            </div>
-
-            <div>
-                <strong>Address 2: </strong>{{person.address2}}
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <strong>City: </strong>{{person.city}}
-                </div>
-                <div class="col-md-3">
-                    <strong>State: </strong>{{person.state}}
-                </div>
-                <div class="col-md-5">
-                    <strong>Zip Code: </strong>{{person.zip}}
-                </div>
-            </div>
         </div>
-
     </div>
+
+</div>
 
 </div>
 
