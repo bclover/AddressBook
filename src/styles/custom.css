@@ -5,13 +5,13 @@
 body{
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    background: #CCCCCC;
+    background: #18778C;
 }
 
 h1{
     text-align: center;
-    color: #666;
-    text-shadow: 0px 2px 0px #fff;
+    color: #F2F2F2;
+    text-shadow: 0px 2px 2px #042440;
 }
 
 #addContactBtn {
@@ -41,28 +41,27 @@ h1{
     min-height: 520px;
     width: 500px;
     margin: 0 auto;
-    box-shadow: 5px 5px 5px #555;
-    background: #fff;
+    box-shadow: 3px 3px 3px #221e55;
+    background: #F2F2F2;
     border-radius: 15px;
     padding: 10px;
 }
 
 .contact-item {
     background: #fffdf1;
-    border: solid 1px #023864;
+    border: solid 1px #221e55;
     border-radius: 5px;
     margin-bottom: 10px;
     padding-top: 25px;
     padding: 10px;
 }
 
-
 #contactForm input {
     width: 95%;
 }
 
 #contactFormInputContainer {
-    background: #f8fff7;
+    background: #fffdf1;
     border: solid 1px #006400;
     border-radius: 5px;
     padding-top: 25px;
