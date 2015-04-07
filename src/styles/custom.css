@@ -18,33 +18,8 @@ h1{
     margin-bottom: 10px;
 }
 
-#sortSelector {
-    display: inline;
-    margin-left: 10px;
-    width: 105px;
-}
-.btn-circle {
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    padding: 1px 0px 0px 1px;
-    font-size: 12px;
-    line-height: .65;
-    border-radius: 15px;
-}
-
-#editIcon, #deleteIcon {
-    padding-right: 3px;
-}
-
-.wrapper{
-    min-height: 520px;
-    width: 500px;
-    margin: 0 auto;
-    box-shadow: 3px 3px 3px #221e55;
-    background: #F2F2F2;
-    border-radius: 15px;
-    padding: 10px;
+.action-col {
+    padding-left: 5px;
 }
 
 .contact-item {
@@ -69,4 +44,20 @@ h1{
 
 .select-pointer {
     cursor: pointer;
+}
+
+#sortSelector {
+    display: inline;
+    margin-left: 10px;
+    width: 105px;
+}
+
+.wrapper{
+    min-height: 520px;
+    width: 500px;
+    margin: 0 auto;
+    box-shadow: 3px 3px 3px #221e55;
+    background: #F2F2F2;
+    border-radius: 15px;
+    padding: 10px;
 }

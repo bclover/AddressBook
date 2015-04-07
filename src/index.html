@@ -174,14 +174,22 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 action-col">
                     <button class="btn btn-link btn-xs" ng-click="editContactBtnClicked(person)">
-                        <i id="editIcon" class="fa fa-pencil"></i>Edit
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle-thin fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x"></i>
+                        </span>
+                        Edit
                     </button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 action-col">
                     <button class="btn btn-link btn-xs" ng-click="removeContactBtnClicked(person)">
-                        <i id="deleteIcon" class="fa fa-trash-o"></i>Delete
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle-thin fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x"></i>
+                        </span>
+                        Delete
                     </button>
                 </div>
             </div>
