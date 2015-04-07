@@ -23,8 +23,8 @@ myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filt
     $scope.people = [
         {
             id:        1,
-            firstName: 'John',
-            lastName:  'Doe',
+            firstName: 'Zack',
+            lastName:  'Adams',
             address1:  '123 High Way',
             address2:  '',
             city:      'New York',
@@ -33,8 +33,8 @@ myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filt
         },
         {
             id:        2,
-            firstName: 'Jane',
-            lastName:  'Doe',
+            firstName: 'Yvette',
+            lastName:  'Baker',
             address1:  '1502 Pine St',
             address2:  'Suite A',
             city:      'Chicago',
@@ -43,8 +43,8 @@ myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filt
         },
         {
             id:        3,
-            firstName: 'Sam',
-            lastName:  'Smith',
+            firstName: 'Xavier',
+            lastName:  'Cooke',
             address1:  '337 Doemont Drive',
             address2:  '',
             city:      'Raleigh',
@@ -53,8 +53,8 @@ myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filt
         },
         {
             id:        4,
-            firstName: 'Paul',
-            lastName:  'Jones',
+            firstName: 'Willie',
+            lastName:  'Dixon',
             address1:  '435 McClellan Dr.',
             address2:  'Suite 213',
             city:      'Pittsburgh',

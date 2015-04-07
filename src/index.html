@@ -139,7 +139,7 @@
     <!-- List of Contacts -->
     <div id="contactInfo" ng-hide="addContactFormIsVisible">
 
-        <div class="contact-item" ng-repeat="person in people | orderBy:currentSort.data">
+        <div class="contact-item" ng-repeat="person in people | orderBy:currentSort.data:reverse">
 
             <div class="row">
                 <div class="col-md-6">
