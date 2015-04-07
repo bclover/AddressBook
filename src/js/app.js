@@ -1,16 +1,28 @@
 var myApp = angular.module('myApp', []);
 
-myApp.controller('MainController', ['$scope', function ($scope) {
+myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filter) {
 
-    var ADD_CONTACT_STATE = 'add.contact.state';
-    var EDIT_CONTACT_STATE = 'edit.contact.state';
-    var currentState = '';
+    var ADD_CONTACT_STATE = 'Add Contact';
+    var EDIT_CONTACT_STATE = 'Edit Contact';
+    $scope.currentState = '';
 
     $scope.error = {message: "* Required fields."};
 
+    $scope.sortOptions = [
+        {name: 'First Name', data: 'firstName'},
+        {name: 'Last Name', data: 'lastName'},
+        {name: 'Address 1', data: 'address1'},
+        {name: 'Address 2', data: 'address2'},
+        {name: 'City', data: 'city'},
+        {name: 'State', data: 'state'},
+        {name: 'Zip', data: 'zip'}
+    ];
+
+    $scope.currentSort = $scope.sortOptions[1];
+
     $scope.people = [
         {
-            id: 1,
+            id:        1,
             firstName: 'John',
             lastName:  'Doe',
             address1:  '123 High Way',
@@ -20,7 +32,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
             zip:       '32567'
         },
         {
-            id: 2,
+            id:        2,
             firstName: 'Jane',
             lastName:  'Doe',
             address1:  '1502 Pine St',
@@ -30,7 +42,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
             zip:       '42212'
         },
         {
-            id: 3,
+            id:        3,
             firstName: 'Sam',
             lastName:  'Smith',
             address1:  '337 Doemont Drive',
@@ -40,7 +52,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
             zip:       '34135'
         },
         {
-            id: 4,
+            id:        4,
             firstName: 'Paul',
             lastName:  'Jones',
             address1:  '435 McClellan Dr.',
@@ -63,6 +75,10 @@ myApp.controller('MainController', ['$scope', function ($scope) {
         clearForm();
     };
 
+    $scope.changeSort = function (newSortOption) {
+        console.log('scope.currentSort:', $scope.currentSort);
+    };
+
     $scope.editContactBtnClicked = function (person) {
         setFormState(EDIT_CONTACT_STATE);
         loadExistingPersonData(person);
@@ -75,7 +91,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
 
     $scope.saveBtnClicked = function () {
         var displayError;
-        (currentState === ADD_CONTACT_STATE) ? addNewContact() : saveChangesToContact();
+        ($scope.currentState === ADD_CONTACT_STATE) ? addNewContact() : saveChangesToContact();
     };
 
     //********************* HELPER METHODS ********************//
@@ -86,7 +102,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
                 displayError = false;
                 showContactForm(false);
                 $scope.people.push({
-                    id: $scope.people.length + 1,
+                    id:        $scope.people.length + 1,
                     firstName: $scope.newPerson.firstName,
                     lastName:  $scope.newPerson.lastName,
                     address1:  $scope.newPerson.address1,
@@ -120,7 +136,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
         $scope.newPerson.state = '';
         $scope.newPerson.zip = '';
         $scope.error.message = '* Required fields.';
-        currentState = '';
+        $scope.currentState = '';
     }
 
     function saveChangesToContact() {
@@ -131,7 +147,7 @@ myApp.controller('MainController', ['$scope', function ($scope) {
     }
 
     function setFormState(newValue) {
-        currentState = newValue;
+        $scope.currentState = newValue;
     }
 
     function showContactForm(newValue) {

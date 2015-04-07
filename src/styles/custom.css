@@ -18,6 +18,11 @@ h1{
     margin-bottom: 10px;
 }
 
+#sortSelector {
+    display: inline;
+    margin-left: 10px;
+    width: 105px;
+}
 .btn-circle {
     width: 20px;
     height: 20px;
@@ -34,7 +39,7 @@ h1{
 
 .wrapper{
     min-height: 535px;
-    width: 550px;
+    width: 500px;
     margin: 0 auto;
     box-shadow: 5px 5px 5px #555;
     background: #fff;
@@ -61,4 +66,8 @@ h1{
     border: solid 1px #006400;
     border-radius: 5px;
     padding-top: 25px;
+}
+
+.select-pointer {
+    cursor: pointer;
 }

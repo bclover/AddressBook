@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 <head lang="en">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,26 +22,38 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 
 <body ng-controller="MainController">
 
 <h1>Address Book</h1>
 
-<div class="wrapper" ng-cloak>
+<div class="wrapper container" ng-cloak>
 
     <!-- Add Contact Button -->
-    <div class="row row-with-margin" ng-hide="addContactFormIsVisible">
-        <div class="text-center">
+    <div class="row" ng-hide="addContactFormIsVisible">
+
+        <div class="col-md-4">
             <button id="addContactBtn" class="btn btn-primary btn-sm" ng-click="addContactBtnClicked()">Add Contact
             </button>
+        </div>
+
+        <div class="col-md-8">
+            <span class="pull-right">
+                <strong>Sort By:</strong>
+                <select id="sortSelector" class="form-control select-pointer"
+                        ng-options="option.name for option in sortOptions"
+                        ng-model="currentSort"></select>
+            </span>
+
         </div>
     </div>
 
     <!-- Add Contact Form -->
     <div id="contactForm" ng-show="addContactFormIsVisible" class="form-horizontal">
 
-        <h2>Add Contact</h2>
+        <h4>{{currentState}}</h4>
 
         <div id="contactFormInputContainer">
 
@@ -126,7 +139,7 @@
     <!-- List of Contacts -->
     <div id="contactInfo" ng-hide="addContactFormIsVisible">
 
-        <div class="contact-item" ng-repeat="person in people | orderBy:'lastName'">
+        <div class="contact-item" ng-repeat="person in people | orderBy:currentSort.data">
 
             <div class="row">
                 <div class="col-md-6">
