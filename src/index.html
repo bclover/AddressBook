@@ -33,12 +33,10 @@
 
     <!-- Add Contact Button -->
     <div class="row" ng-hide="addContactFormIsVisible">
-
         <div class="col-md-4">
             <button id="addContactBtn" class="btn btn-primary btn-sm" ng-click="addContactBtnClicked()">Add Contact
             </button>
         </div>
-
         <div class="col-md-8">
             <span class="pull-right">
                 <strong>Sort By:</strong>
@@ -46,17 +44,14 @@
                         ng-options="option.name for option in sortOptions"
                         ng-model="currentSort"></select>
             </span>
-
         </div>
     </div>
 
     <!-- Add Contact Form -->
     <div id="contactForm" ng-show="addContactFormIsVisible" class="form-horizontal">
-
         <h4>{{currentState}}</h4>
 
         <div id="contactFormInputContainer">
-
             <div class="form-group">
                 <div class="col-md-3 control-label">
                     <span class="text-danger">*</span><strong>First Name:</strong>
@@ -115,32 +110,25 @@
             </div>
             <div class="form-group">
                 <div class="col-md-3">
-
                 </div>
                 <div class="col-md-9 text-danger">
                     {{error.message}}
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-3 control-label">
-
                 </div>
                 <div class="col-md-9">
                     <button class="btn btn-primary btn-sm" ng-click="saveBtnClicked()">Save</button>
                     <button class="btn btn-primary btn-sm" ng-click="cancelBtnClicked()">Cancel</button>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <!-- List of Contacts -->
     <div id="contactInfo" ng-hide="addContactFormIsVisible">
-
         <div class="contact-item" ng-repeat="person in people | orderBy:currentSort.data:reverse">
-
             <div class="row">
                 <div class="col-md-6">
                     <strong>Name:</strong>
@@ -151,7 +139,6 @@
                     {{person.city}}
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-6">
                     <strong>Address 1: </strong>
@@ -162,7 +149,6 @@
                     {{person.state}}
                 </div>
             </div>
-
             <div div class="row">
                 <div class="col-md-6">
                     <strong>Address 2: </strong>
@@ -172,15 +158,13 @@
                     <strong>Zip Code: </strong>{{person.zip}}
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-6 action-col">
                     <button class="btn btn-link btn-xs" ng-click="editContactBtnClicked(person)">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle-thin fa-stack-2x"></i>
                             <i class="fa fa-pencil fa-stack-1x"></i>
-                        </span>
-                        Edit
+                        </span>Edit
                     </button>
                 </div>
                 <div class="col-md-6 action-col">
@@ -188,15 +172,12 @@
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle-thin fa-stack-2x"></i>
                             <i class="fa fa-trash-o fa-stack-1x"></i>
-                        </span>
-                        Delete
+                        </span>Delete
                     </button>
                 </div>
             </div>
-
         </div>
     </div>
-
 </div>
 
 </div>
