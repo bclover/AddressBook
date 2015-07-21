@@ -1,0 +1,47 @@
+[
+    {
+        "firstName": "Zack",
+        "lastName": "Adams",
+        "address1": "123 High Way",
+        "address2": "",
+        "city": "New York",
+        "state": "NY",
+        "zip": "10001"
+    },
+    {
+        "firstName": "Billy",
+        "lastName": "Bailey",
+        "address1": "45 Gunner Way",
+        "address2": "Apt #3",
+        "city": "Springfield",
+        "state": "IN",
+        "zip": "65801"
+    },
+    {
+        "firstName": "Yvette",
+        "lastName": "Baker",
+        "address1": "1502 Pine St",
+        "address2": "Suite A",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60615"
+    },
+    {
+        "firstName": "Xavier",
+        "lastName": "Cooke",
+        "address1": "337 Doemont Drive",
+        "address2": "",
+        "city": "Raleigh",
+        "state": "NC",
+        "zip": "27603"
+    },
+    {
+        "firstName": "Willie",
+        "lastName": "Dixon",
+        "address1": "435 McClellan Drive",
+        "address2": "",
+        "city": "Pittsburgh",
+        "state": "PA",
+        "zip": "15216"
+    }
+]

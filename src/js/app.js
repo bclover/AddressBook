@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', []);
 
-myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filter) {
+myApp.controller('MainController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 
     var ADD_CONTACT_STATE = 'Add Contact';
     var EDIT_CONTACT_STATE = 'Edit Contact';
@@ -20,48 +20,48 @@ myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filt
 
     $scope.currentSort = $scope.sortOptions[1];
 
-    $scope.people = [
-        {
-            id:        1,
-            firstName: 'Zack',
-            lastName:  'Adams',
-            address1:  '123 High Way',
-            address2:  '',
-            city:      'New York',
-            state:     'NY',
-            zip:       '32567'
-        },
-        {
-            id:        2,
-            firstName: 'Yvette',
-            lastName:  'Baker',
-            address1:  '1502 Pine St',
-            address2:  'Suite A',
-            city:      'Chicago',
-            state:     'IL',
-            zip:       '42212'
-        },
-        {
-            id:        3,
-            firstName: 'Xavier',
-            lastName:  'Cooke',
-            address1:  '337 Doemont Drive',
-            address2:  '',
-            city:      'Raleigh',
-            state:     'NC',
-            zip:       '34135'
-        },
-        {
-            id:        4,
-            firstName: 'Willie',
-            lastName:  'Dixon',
-            address1:  '435 McClellan Dr.',
-            address2:  'Suite 213',
-            city:      'Pittsburgh',
-            state:     'PA',
-            zip:       '42678'
-        }
-    ];
+    //$scope.people = [
+    //    {
+    //        id:        1,
+    //        firstName: 'Zack',
+    //        lastName:  'Adams',
+    //        address1:  '123 High Way',
+    //        address2:  '',
+    //        city:      'New York',
+    //        state:     'NY',
+    //        zip:       '32567'
+    //    },
+    //    {
+    //        id:        2,
+    //        firstName: 'Yvette',
+    //        lastName:  'Baker',
+    //        address1:  '1502 Pine St',
+    //        address2:  'Suite A',
+    //        city:      'Chicago',
+    //        state:     'IL',
+    //        zip:       '42212'
+    //    },
+    //    {
+    //        id:        3,
+    //        firstName: 'Xavier',
+    //        lastName:  'Cooke',
+    //        address1:  '337 Doemont Drive',
+    //        address2:  '',
+    //        city:      'Raleigh',
+    //        state:     'NC',
+    //        zip:       '34135'
+    //    },
+    //    {
+    //        id:        4,
+    //        firstName: 'Willie',
+    //        lastName:  'Dixon',
+    //        address1:  '435 McClellan Dr.',
+    //        address2:  'Suite 213',
+    //        city:      'Pittsburgh',
+    //        state:     'PA',
+    //        zip:       '42678'
+    //    }
+    //];
 
     //********************* VIEW METHODS ********************//
 
@@ -86,7 +86,15 @@ myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filt
     };
 
     $scope.removeContactBtnClicked = function (person) {
-        $scope.people = _.without($scope.people, person);
+        //$scope.people = _.without($scope.people, person);
+
+        $http.delete('../api/addresses/' + person._id)
+            .success(function (data) {
+                $scope.people = data;
+            })
+            .error(function(error){
+                console.log(error);
+            })
     };
 
     $scope.saveBtnClicked = function () {
@@ -140,10 +148,18 @@ myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filt
     }
 
     function saveChangesToContact() {
-        var existingContactIndex = _.findIndex($scope.people, 'id', $scope.newPerson.id);
-        $scope.people[existingContactIndex] = $scope.newPerson;
-        clearForm();
-        showContactForm(false);
+        //var existingContactIndex = _.findIndex($scope.people, 'id', $scope.newPerson.id);
+        //$scope.people[existingContactIndex] = $scope.newPerson;
+
+        $http.put('../api/addresses/' + $scope.newPerson._id, $scope.newPerson)
+            .success(function (data) {
+                $scope.people = data;
+                clearForm();
+                showContactForm(false);
+            })
+            .error(function(error){
+                console.log(error);
+            })
     }
 
     function setFormState(newValue) {
@@ -156,7 +172,7 @@ myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filt
 
     function loadExistingPersonData(person) {
         $scope.newPerson = {};
-        $scope.newPerson.id = person.id;
+        $scope.newPerson._id = person._id;
         $scope.newPerson.firstName = person.firstName;
         $scope.newPerson.lastName = person.lastName;
         $scope.newPerson.address1 = person.address1;
@@ -165,5 +181,17 @@ myApp.controller('MainController', ['$scope', '$filter', function ($scope, $filt
         $scope.newPerson.state = person.state;
         $scope.newPerson.zip = person.zip;
     }
+
+    function initData() {
+        $http.get('../api/addresses')
+            .success(function (data) {
+                $scope.people = data;
+            })
+            .error(function(error){
+                console.log('Error:',error);
+            })
+    }
+
+    initData();
 
 }]);
